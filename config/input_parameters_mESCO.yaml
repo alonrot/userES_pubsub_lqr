@@ -1,0 +1,64 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of userES_pubsub_lqr.
+# 
+# userES_pubsub_lqr is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# userES_pubsub_lqr is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# userES_pubsub_lqr.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Variables:
+Dim: 1
+
+# Controller: to be specified in the inputs
+topic_controller: "/LQRgains/search"
+topic_id_controller: "/LQRgains/search/id"
+id_controller: 11
+
+# Controller structure: size(K) = [Nu Nx], u = K*x
+Nx: 4
+Nu: 1
+label_dim0: "inputs"
+label_dim1: "states"
+full_verbosity: true
+
+# Verbosity:
+print_threshold: 5
+
+# Cost value:
+topic_cost_value: "/cost_value"
+topic_id_cost_value: "/cost_value/id"
+id_cost_value: 12
+
+ask_user_for_value: false
+
+# Robot alive:
+topic_robot_alive: /robot_alive
+
+#### Get linear system + LQR gains ####
+
+# # Pole balancing:
+file_name_linsys: "apollo_pole_balancing/linear_model.yaml"
+file_name_des_weights: "apollo_pole_balancing/LQRgains.yaml"
+
+# Initial data:
+Ndata_init: 0
+
+X_init:
+  -
+    - 0.0
+Y_init:
+  - 0.0

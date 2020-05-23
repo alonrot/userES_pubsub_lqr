@@ -1,0 +1,43 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of userES_pubsub_lqr.
+# 
+# userES_pubsub_lqr is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# userES_pubsub_lqr is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# userES_pubsub_lqr.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Configuration of the empirical weights (Q_empirical, R_empirical):
+Q_empirical: [1.0,6.0,1.0,1.0] # Do not remove the brackets
+R_empirical: [0.25] # Do not remove the brackets
+
+# Configuration of the design weights (Q_design, R_design):
+# Parametrization of parameter i, as Q(i,i) = a * theta + b
+# [i,a,b]:
+#   i: index of the parametrized element of the diagonal (index starts at one, not at zero)
+#   a: slope
+#   b: offset
+Q_design: 
+  - [2, 1, 0]
+R_design:
+  - [0, 0, 0]
+
+# Parameters:
+pars: [6]
+# pars: [6] # This works for the demos, as safe controller
+
+# Parametrization structure:
+use_linear_scaling: true # false for exponential scaling

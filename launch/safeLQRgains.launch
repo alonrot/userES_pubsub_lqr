@@ -1,0 +1,14 @@
+<launch>
+
+	<!-- Global parameters -->
+	<arg name="topic_name_LQRsafe" 	default="/LQRgains/safe" 		/>
+	<arg name="topic_id_LQRsafe" 		default="/LQRgains/safe/id" />
+	<arg name="id_LQRsafe" 					default="10" 								/>
+
+	<!-- Display the pole in rviz -->
+	<node pkg="userES_pubsub_lqr" name="run_send_lqr_gains" type="run_send_lqr_gains" output="screen" 
+				args="$(arg topic_name_LQRsafe)
+							$(arg topic_id_LQRsafe)
+							$(arg id_LQRsafe)"/>
+
+</launch>

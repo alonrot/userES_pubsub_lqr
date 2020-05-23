@@ -1,0 +1,112 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of userES_pubsub_lqr.
+# 
+# userES_pubsub_lqr is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# userES_pubsub_lqr is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# userES_pubsub_lqr.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Variables:
+Dim:             1
+Nrepresenters:  100
+# Nrepresenters:  100
+Nsubsamples:    5
+Nline_searches: 20
+T:              200
+# T:              100
+Ndiv_plot:      200
+# Ndiv_plot:      50
+Nwarm_starts:   5
+MaxEvals:       10
+
+# Debugging logging and flags:
+write2file:     false # Logging data into .m files
+write_matrices_to_file: false
+read_for_test_dH_MC_local_flag: false
+read_for_test_SampleBeliefLocations_flag: false
+
+name_evalfun:   "synthetic_functions/syn_fun1D_1.yaml" # This file has to exist inside config/
+# name_evalfun:   "synthetic_functions/syn_fun2D_1.yaml" # This file has to exist inside config/
+
+# Data logging:
+path2data_logging: "data_logging"
+
+# Path to plot with python:
+write2pyplot: true
+plot_true_function: false
+
+# Controller: to be specified in the inputs
+topic_controller: "/LQRgains/search"
+topic_id_controller: "/LQRgains/search/id"
+id_controller: 11
+
+base_pos_z_axis: 0
+
+# Controller structure: size(K) = [Nu Nx], u = K*x
+Nx: 4
+Nu: 1
+label_dim0: "inputs"
+label_dim1: "states"
+full_verbosity: true
+
+# Verbosity:
+print_threshold: 5
+
+# Cost value:
+topic_cost_value: "/cost_value"
+topic_id_cost_value: "/cost_value/id"
+id_cost_value: 12
+
+ask_user_for_value: false
+
+# Robot alive:
+topic_robot_alive: /robot_alive
+
+#### Get linear system + LQR gains ####
+
+# # Pole balancing:
+file_name_linsys: "apollo_pole_balancing/linear_model.yaml"
+file_name_des_weights: "apollo_pole_balancing/LQRgains.yaml"
+
+# # Hermes:
+# file_name_linsys: "hermes_balancing/linear_model.yaml"
+# file_name_des_weights: "hermes_balancing/LQRgains.yaml"
+
+# Domain:
+xmin_s:         0.0
+xmax_s:         15.0
+
+# Gaussian process:
+# which_kernel:   "CovSum ( CovSEard, CovNoise)" # Don't use "CovSum ( CovNoise, CovSEard )", as this will mess up with the order of the hyperparameters in the code.
+which_kernel:   "CovSum ( CovMatern3iso, CovNoise)"
+lengthscale_s:  [1.0] # DO NOT remove the brackets, even if it's for one dimension
+# lengthscale_s:  [0.1,0.1] # DO NOT remove the brackets, even if it's for one dimension
+prior_std_s:    0.2
+# prior_std_n:    0.0125516712
+prior_std_n:    0.01
+learn_hypers:   false # Feature not implemented yet
+
+# Initial data:
+Ndata_init:     0
+
+X_init:
+  -
+    - 0.0
+Y_init:
+  - 0.0
+# Notes for documentation:
+# Do not erase the config/ folder, as the compiler will look for it

@@ -1,0 +1,147 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of userES_pubsub_lqr.
+# 
+# userES_pubsub_lqr is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# userES_pubsub_lqr is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# userES_pubsub_lqr.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Configuration of the empirical weights (Q_empirical, R_empirical):
+Q_empirical:
+- 100000.0  # thError_L_HFE 		1
+- 100000.0  # thError_L_HAA 		2 1000 - 100000
+- 1000.0    # thError_L_HFR 		3 10 - 100000
+- 10000000.0   # thError_L_KFE 		4
+- 1000.0    # thError_L_AR 			5 10 - 100000
+- 100000.0  # thError_L_AFE 		6
+- 500000.0  # thError_L_AAA 		7 100000 - 1000000
+- 100000.0  # thError_R_HFE 		8
+- 1000000.0  # thError_R_HAA 		9
+- 1000.0    # thError_R_HFR 		10
+- 10000000.0   # thError_R_KFE 		11
+- 1000.0    # thError_R_AR 			12
+- 100000.0  # thError_R_AFE 		13
+- 500000.0  # thError_R_AAA 		14
+- 1.0 	    # thError_B_TR 			15
+- 1.0 	    # thError_B_TAA 		16
+- 1.0 	    # thError_B_TFE 		17
+- 10000.0 	# thError_base_pos_x 	18
+- 10000.0 	# thError_base_pos_y 	19
+- 100000.0 	# thError_base_pos_z 	20
+- 100.0 		# thError_base_ori_x 	21
+- 100.0 		# thError_base_ori_y 	22
+- 100.0 		# thError_base_ori_z 	23
+- 1.0 		  # thdError_L_HFE	 	24
+- 1.0 		  # thdError_L_HAA 		25
+- 1.0 		  # thdError_L_HFR 		26
+- 1.0 		  # thdError_L_KFE 		27
+- 1.0 		  # thdError_L_AR 		28
+- 0.0001 		# thdError_L_AFE 		29
+- 1.0 		  # thdError_L_AAA 		30
+- 1.0 		  # thdError_R_HFE		31
+- 1.0 		  # thdError_R_HAA		32
+- 1.0 		  # thdError_R_HFR		33
+- 1.0 		  # thdError_R_KFE		34
+- 1.0 		  # thdError_R_AR			35
+- 0.0001 		# thdError_R_AFE		36
+- 1.0 		  # thdError_R_AAA		37
+- 1.0 		  # thdError_B_TR			38
+- 1.0 		  # thdError_B_TAA		39
+- 1.0 		  # thdError_B_TFE		40
+- 1.0 		  # thdError_base_pos_x	41
+- 1.0 		  # thdError_base_pos_y	42
+- 1.0 		  # thdError_base_pos_z	43
+- 1.0 		  # thdError_base_ori_x	44
+- 1.0 		  # thdError_base_ori_y	45
+- 1.0 		  # thdError_base_ori_z	46
+R_empirical:
+- 1.0 			# uff_L_HFE 	1
+- 1.0 			# uff_L_HAA 	2
+- 1.0 			# uff_L_HFR 	3
+- 1.0 			# uff_L_KFE 	4
+- 1.0 			# uff_L_AR 		5
+- 1.0 			# uff_L_AFE 	6
+- 1.0 			# uff_L_AAA 	7
+- 1.0 			# uff_R_HFE 	8
+- 1.0 			# uff_R_HAA 	9
+- 1.0 			# uff_R_HFR 	10
+- 1.0 			# uff_R_KFE 	11
+- 1.0 			# uff_R_AR 		12
+- 1.0 			# uff_R_AFE 	13
+- 1.0 			# uff_R_AAA 	14
+- 1.0 			# uff_B_TR 		15
+- 1.0 			# uff_B_TAA 	16
+- 1.0 			# uff_B_TFE 	17
+
+  # Configuration of the design weights (Q_design, R_design):
+  # Parametrization of parameter i, as Q(i,i) = a * theta + b
+  # [i,a,b]:
+  #   i: index of the parametrized element of the diagonal (index starts at one, not at zero)
+  #   a: slope
+  #   b: offset
+Q_design: 
+  # - [6,13,40000,11000]
+  # - [2, 6000.0, 63000.0]
+  # - [19, 40000, 0.0]
+  # - [6, 13, 4, 11, 3, 8, 1000000,0]
+  # - [2,3,9,10,2,0]
+  # 6D parametrization:
+  - [6 ,13,2.0,4.0] # AFE
+  - [4 ,11,2.0,4.0] # KFE
+  - [1 , 8,2.0,4.0] # HFE
+  - [2 , 9,2.0,3.0] # HAA
+  - [7, 14,1.0,5.0] # AAA
+  - [3, 5, 10, 12,4.0,1.0] # AAA
+  # - [19, ]          # thError_base_pos_y
+  # 2D parametrization:
+  # - [1,4,6,8,11,13,5.0,2.0]  # FE
+  # - [2,7,9,14,3.0,3.0]  # AA
+  # No parametrization:
+  # - [0, 0.0, 0]
+R_design:
+  - [0, 0.0, 0]
+  # - [15, 16, 17, 1, 2, 3, 4, 1.0, 0]
+  # - [15, 16, 17, 1.0, 0]
+  # - [6, 13, 4, 11, 1, 8, 2, 0]
+
+# Parameters:
+pars: [0.768231,0.277798,  0.55396, 0.477431, 0.628885, 0.364782] # BG
+# pars: [0.3,0.3,0.3]
+
+# Parametrization structure:
+use_linear_scaling: false # false for exponential scaling
+
+# From HermesLower/include/SL_user.h
+  # L_HFE, // 01
+  # L_HAA, // 02
+  # L_HFR, // 03
+  # L_KFE, // 04
+  # L_AR,  // 05
+  # L_AFE, // 06
+  # L_AAA, // 07
+
+  # R_HFE, // 08
+  # R_HAA, // 09
+  # R_HFR, // 10
+  # R_KFE, // 11
+  # R_AR,  // 12
+  # R_AFE, // 13
+  # R_AAA, // 14
+
+  # B_TR,  // 15
+  # B_TAA, // 16
+  # B_TFE, // 17

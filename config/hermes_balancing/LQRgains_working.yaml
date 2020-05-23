@@ -1,0 +1,135 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of userES_pubsub_lqr.
+# 
+# userES_pubsub_lqr is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# userES_pubsub_lqr is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# userES_pubsub_lqr.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Configuration of the empirical weights (Q_empirical, R_empirical):
+Q_empirical:
+- 22000.0 	# thError_L_HFE 		1
+- 66000.0 	# thError_L_HAA 		2
+- 22000.0 	# thError_L_HFR 		3
+- 22000.0 	# thError_L_KFE 		4
+- 22000.0 	# thError_L_AR 			5
+- 22000.0 	# thError_L_AFE 		6
+- 50000.0 	# thError_L_AAA 		7
+- 22000.0 	# thError_R_HFE 		8
+- 66000.0 	# thError_R_HAA 		9
+- 22000.0 	# thError_R_HFR 		10
+- 22000.0 	# thError_R_KFE 		11
+- 22000.0 	# thError_R_AR 			12
+- 22000.0 	# thError_R_AFE 		13
+- 50000.0 	# thError_R_AAA 		14
+- 22000.0 	# thError_B_TR 			15
+- 22000.0 	# thError_B_TAA 		16
+- 22000.0 	# thError_B_TFE 		17
+- 20000.0 		# thError_base_pos_x 	18
+- 20000.0 		# thError_base_pos_y 	19
+- 20000.0 		# thError_base_pos_z 	20
+- 1.0 		# thError_base_ori_x 	21
+- 1.0 		# thError_base_ori_y 	22
+- 1.0 		# thError_base_ori_z 	23
+- 50.0 		# thdError_L_HFE	 	24
+- 50.0 		# thdError_L_HAA 		25
+- 50.0 		# thdError_L_HFR 		26
+- 50.0 		# thdError_L_KFE 		27
+- 50.0 		# thdError_L_AR 		28
+- 50.0 		# thdError_L_AFE 		29
+- 50.0 		# thdError_L_AAA 		30
+- 50.0 		# thdError_R_HFE		31
+- 50.0 		# thdError_R_HAA		32
+- 50.0 		# thdError_R_HFR		33
+- 50.0 		# thdError_R_KFE		34
+- 50.0 		# thdError_R_AR			35
+- 50.0 		# thdError_R_AFE		36
+- 50.0 		# thdError_R_AAA		37
+- 50.0 		# thdError_B_TR			38
+- 50.0 		# thdError_B_TAA		39
+- 50.0 		# thdError_B_TFE		40
+- 50.0 		# thdError_base_pos_x	41
+- 50.0 		# thdError_base_pos_y	42
+- 50.0 		# thdError_base_pos_z	43
+- 50.0 		# thdError_base_ori_x	44
+- 50.0 		# thdError_base_ori_y	45
+- 50.0 		# thdError_base_ori_z	46
+R_empirical:
+- 1.0 			# uff_L_HFE 	1
+- 1.0 			# uff_L_HAA 	2
+- 2.0 			# uff_L_HFR 	3
+- 1.0 			# uff_L_KFE 	4
+- 1.0 			# uff_L_AR 		5
+- 0.3 			# uff_L_AFE 	6
+- 0.1 			# uff_L_AAA 	7
+- 1.0 			# uff_R_HFE 	8
+- 1.0 			# uff_R_HAA 	9
+- 2.0 			# uff_R_HFR 	10
+- 1.0 			# uff_R_KFE 	11
+- 1.0 			# uff_R_AR 		12
+- 0.3 			# uff_R_AFE 	13
+- 0.1 			# uff_R_AAA 	14
+- 1.0 			# uff_B_TR 		15
+- 1.0 			# uff_B_TAA 	16
+- 1.0 			# uff_B_TFE 	17
+
+# Configuration of the design weights (Q_design, R_design):
+# Parametrization of parameter i, as Q(i,i) = a * theta + b
+# [i,a,b]:
+#   i: index of the parametrized element of the diagonal (index starts at one, not at zero)
+#   a: slope
+#   b: offset
+Q_design: 
+  # - [6,13,40000,11000]
+  # - [2, 6000.0, 63000.0]
+  # - [19, 40000, 0.0]
+  # - [6, 13, 4, 11, 3, 8, 1000000,0]
+  - [1,4,6,8,11,13,4.0,1.0]  # FE
+  # - [2,3,9,10,2,0]
+  - [2,7,9,14,4.0,1.0]  # AA
+R_design:
+  - [0, 0.0, 0]
+  # - [15, 16, 17, 1, 2, 3, 4, 1.0, 0]
+  # - [15, 16, 17, 1.0, 0]
+  # - [6, 13, 4, 11, 1, 8, 2, 0]
+
+# Parameters:
+pars: [0.7,0.7]
+
+# Parametrization structure:
+use_linear_scaling: false # false for exponential scaling
+
+# From HermesLower/include/SL_user.h
+  # L_HFE, // 01
+  # L_HAA, // 02
+  # L_HFR, // 03
+  # L_KFE, // 04
+  # L_AR,  // 05
+  # L_AFE, // 06
+  # L_AAA, // 07
+
+  # R_HFE, // 08
+  # R_HAA, // 09
+  # R_HFR, // 10
+  # R_KFE, // 11
+  # R_AR,  // 12
+  # R_AFE, // 13
+  # R_AAA, // 14
+
+  # B_TR,  // 15
+  # B_TAA, // 16
+  # B_TFE, // 17
