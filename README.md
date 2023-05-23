@@ -31,17 +31,9 @@ This package requires:
 * [Eigen3](http://eigen.tuxfamily.org/): template library for linear algebra
 * [ct](https://arxiv.org/abs/1801.04290): The Control Toolbox - Library for Robotics, Optimal and Model Predictive Control
 
-Installation
-============
-TODO
-
-Example
-=======
-TODO
-
 Contact information
 ===================
 For any questions, please, send an e-mail to: 
 
-   alonso.marco(at)tuebingen.mpg.de
+   marcovalle.a(at)gmail.com
 
